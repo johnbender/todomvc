@@ -49,14 +49,25 @@ var app = app || {};
 			}
 
 			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.toggleClass('completed', this.model.get('completed'));
+
+			if( this.model.get('completed') ){
+				this.$el.addClass('completed' );
+			} else {
+				this.$el.removeClass('completed' );
+			}
+
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			return this;
 		},
 
+
 		toggleVisible: function () {
-			this.$el.toggleClass('hidden', this.isHidden());
+			if( this.model.get('hidden') ){
+				this.$el.addClass('hidden' );
+			} else {
+				this.$el.removeClass('hidden' );
+			}
 		},
 
 		isHidden: function () {
@@ -73,7 +84,7 @@ var app = app || {};
 		// Switch this view into `"editing"` mode, displaying the input field.
 		edit: function () {
 			this.$el.addClass('editing');
-			this.$input.focus();
+			// this.$input.focus();
 		},
 
 		// Close the `"editing"` mode, saving changes to the todo.
@@ -85,7 +96,7 @@ var app = app || {};
 			// longer being edited. Relying on the CSS class here has the
 			// benefit of us not having to maintain state in the DOM and the
 			// JavaScript logic.
-			if (!this.$el.hasClass('editing')) {
+			if (!this.$el.is('.editing')) {
 				return;
 			}
 

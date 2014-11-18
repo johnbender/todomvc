@@ -1075,11 +1075,22 @@
         var match = key.match(delegateEventSplitter);
         var eventName = match[1], selector = match[2];
         method = _.bind(method, this);
+
+        function wrap(method, selector) {
+          return function( event ){
+            var args = arguments;
+
+            if( $(event.target).is(selector) ){
+              method.apply(this, args);
+            }
+          };
+        }
+
         eventName += '.delegateEvents' + this.cid;
         if (selector === '') {
           this.$el.on(eventName, method);
         } else {
-          this.$el.on(eventName, selector, method);
+          this.$el.on(eventName, wrap(method, selector));
         }
       }
       return this;

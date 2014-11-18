@@ -53,8 +53,8 @@ var app = app || {};
 			var remaining = app.todos.remaining().length;
 
 			if (app.todos.length) {
-				this.$main.show();
-				this.$footer.show();
+				this.$main.css( "display", "block" );
+				this.$footer.css( "display", "block" );
 
 				this.$footer.html(this.statsTemplate({
 					completed: completed,
@@ -66,8 +66,8 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				this.$main.hide();
-				this.$footer.hide();
+				this.$main.css( "display: none" );
+				this.$footer.css( "display: none" );
 			}
 
 			this.allCheckbox.checked = !remaining;
