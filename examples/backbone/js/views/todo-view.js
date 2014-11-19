@@ -66,7 +66,7 @@ var app = app || {};
 
 
 		toggleVisible: function () {
-			if( this.model.get('hidden') ){
+			if( this.isHidden() ){
 				this.$el.addClass('hidden' );
 			} else {
 				this.$el.removeClass('hidden' );
