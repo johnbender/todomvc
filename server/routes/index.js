@@ -42,6 +42,7 @@ router.get('/', function(req, res) {
     templates: templates,
 
     todos: data.todos,
+    todosJSON: JSON.stringify(data.todos),
 
     // TODO base on values
     completed: 1,

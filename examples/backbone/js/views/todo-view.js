@@ -13,7 +13,7 @@ var app = app || {};
 		tagName:  'li',
 
 		// Cache the template function for a single item.
-		template: _.template($('#item-template').html()),
+		template: $('#item-template').html(),
 
 		// The DOM events specific to an item.
 		events: {
@@ -30,6 +30,9 @@ var app = app || {};
 		// **TodoView** in this app, we set a direct reference on the model for
 		// convenience.
 		initialize: function () {
+			// parse and cache
+			Mustache.parse(this.template);
+
 			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -48,7 +51,7 @@ var app = app || {};
 				return;
 			}
 
-			this.$el.html(this.template(this.model.toJSON()));
+			this.$el.html(Mustache.render(this.template, this.model.toJSON()));
 
 			if( this.model.get('completed') ){
 				this.$el.addClass('completed' );

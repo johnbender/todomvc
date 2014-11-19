@@ -4,9 +4,25 @@
 		</script>
 		{{/ templates }}
 
+
+
 		<script src="mustache/mustache.js"></script>
 		<script src="backbone/bower_components/todomvc-common/base.js"></script>
 		<script src="backbone/bower_components/jquery/jquery.js"></script>
+
+
+		<script>
+			jQuery(function(){
+				window.app = window.app || {}
+
+				// TODO obviously this value needs to be escaped to avoid injection
+				window.app.data = {
+					todos: {{{ todosJSON }}}
+				}
+			});
+		</script>
+
+
 		<script src="backbone/bower_components/underscore/underscore.js"></script>
 		<script src="backbone/bower_components/backbone/backbone.js"></script>
 		<script src="backbone/bower_components/backbone.localStorage/backbone.localStorage.js"></script>

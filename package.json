@@ -12,7 +12,8 @@
     "learn.json"
   ],
   "dependencies": {
-    "express": "^4.10.0"
+    "express": "^4.10.0",
+    "mustache": "^0.8.2"
   },
   "devDependencies": {
     "del": "^0.1.1",

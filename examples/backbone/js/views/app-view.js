@@ -15,7 +15,7 @@ var app = app || {};
 		el: '#todoapp',
 
 		// Our template for the line of statistics at the bottom of the app.
-		statsTemplate: _.template($('#stats-template').html()),
+		template: $('#stats-template').html(),
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
@@ -28,6 +28,9 @@ var app = app || {};
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting todos that might be saved in *localStorage*.
 		initialize: function () {
+			// parse and cache
+			Mustache.parse(this.template);
+
 			this.allCheckbox = this.$('#toggle-all')[0];
 			this.$input = this.$('#new-todo');
 			this.$footer = this.$('#footer');
@@ -43,7 +46,7 @@ var app = app || {};
 			// Suppresses 'add' events with {reset: true} and prevents the app view
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
-			app.todos.fetch({reset: true});
+			app.todos.reset( app.data.todos, { silent: true });
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
@@ -56,7 +59,7 @@ var app = app || {};
 				this.$main.css( "display", "block" );
 				this.$footer.css( "display", "block" );
 
-				this.$footer.html(this.statsTemplate({
+				this.$footer.html(Mustache.render(this.template, {
 					completed: completed,
 					remaining: remaining
 				}));
