@@ -47,6 +47,14 @@ var app = app || {};
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
 			app.todos.reset( app.data.todos, { silent: true });
+
+			// take the existing markup and use that for the todo views
+			// TODO cleanup
+			app.todos.each(_.bind(function(todo, i) {
+				var view = new app.TodoView({ model: todo });
+				// TODO one query
+				view.setElement( this.$list.find("li" )[i] );
+			}, this));
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
