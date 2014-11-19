@@ -1,7 +1,10 @@
-		<script type="text/template" id="item-template">
+		{{# templates }}
+		<script type="text/template" id="{{ name }}-template">
+			{{{ markup }}}
 		</script>
-		<script type="text/template" id="stats-template">
-		</script>
+		{{/ templates }}
+
+		<script src="mustache/mustache.js"></script>
 		<script src="backbone/bower_components/todomvc-common/base.js"></script>
 		<script src="backbone/bower_components/jquery/jquery.js"></script>
 		<script src="backbone/bower_components/underscore/underscore.js"></script>
