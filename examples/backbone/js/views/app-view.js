@@ -15,7 +15,7 @@ var app = app || {};
 		el: '#todoapp',
 
 		// Our template for the line of statistics at the bottom of the app.
-		statsTemplate: $('#stats-template').html(),
+		statsTemplate: _.template($('#stats-template').html()),
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
@@ -28,9 +28,6 @@ var app = app || {};
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting todos that might be saved in *localStorage*.
 		initialize: function () {
-			// parse and cache
-			Mustache.parse(this.statsTemplate);
-
 			this.allCheckbox = this.$('#toggle-all')[0];
 			this.$input = this.$('#new-todo');
 			this.$footer = this.$('#footer');
@@ -46,15 +43,7 @@ var app = app || {};
 			// Suppresses 'add' events with {reset: true} and prevents the app view
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
-			app.todos.reset( app.data.todos, { silent: true });
-
-			// take the existing markup and use that for the todo views
-			// TODO cleanup
-			app.todos.each(_.bind(function(todo, i) {
-				var view = new app.TodoView({ model: todo });
-				// TODO one query
-				view.setElement( this.$list.find("li" )[i] );
-			}, this));
+			app.todos.fetch({reset: true});
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
@@ -64,14 +53,12 @@ var app = app || {};
 			var remaining = app.todos.remaining().length;
 
 			if (app.todos.length) {
-				this.$main.css( "display", "block" );
-				this.$footer.css( "display", "block" );
+				this.$main.show();
+				this.$footer.show();
 
-				this.$footer.html(Mustache.render(this.statsTemplate, {
+				this.$footer.html(this.statsTemplate({
 					completed: completed,
-					remaining: remaining,
-					remainingPlural: remaining > 1,
-					someCompleted: completed > 0
+					remaining: remaining
 				}));
 
 				this.$('#filters li a')
@@ -79,8 +66,8 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				this.$main.css( "display: none" );
-				this.$footer.css( "display: none" );
+				this.$main.hide();
+				this.$footer.hide();
 			}
 
 			this.allCheckbox.checked = !remaining;

@@ -13,7 +13,7 @@ var app = app || {};
 		tagName:  'li',
 
 		// Cache the template function for a single item.
-		template: $('#item-template').html(),
+		template: _.template($('#item-template').html()),
 
 		// The DOM events specific to an item.
 		events: {
@@ -30,9 +30,6 @@ var app = app || {};
 		// **TodoView** in this app, we set a direct reference on the model for
 		// convenience.
 		initialize: function () {
-			// parse and cache
-			Mustache.parse(this.template);
-
 			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -51,26 +48,15 @@ var app = app || {};
 				return;
 			}
 
-			this.$el.html(Mustache.render(this.template, this.model.toJSON()));
-
-			if( this.model.get('completed') ){
-				this.$el.addClass('completed' );
-			} else {
-				this.$el.removeClass('completed' );
-			}
-
+			this.$el.html(this.template(this.model.toJSON()));
+			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			return this;
 		},
 
-
 		toggleVisible: function () {
-			if( this.isHidden() ){
-				this.$el.addClass('hidden' );
-			} else {
-				this.$el.removeClass('hidden' );
-			}
+			this.$el.toggleClass('hidden', this.isHidden());
 		},
 
 		isHidden: function () {
@@ -87,7 +73,7 @@ var app = app || {};
 		// Switch this view into `"editing"` mode, displaying the input field.
 		edit: function () {
 			this.$el.addClass('editing');
-			// this.$input.focus();
+			this.$input.focus();
 		},
 
 		// Close the `"editing"` mode, saving changes to the todo.
@@ -99,7 +85,7 @@ var app = app || {};
 			// longer being edited. Relying on the CSS class here has the
 			// benefit of us not having to maintain state in the DOM and the
 			// JavaScript logic.
-			if (!this.$el.is('.editing')) {
+			if (!this.$el.hasClass('editing')) {
 				return;
 			}
 
