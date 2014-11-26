@@ -8,7 +8,7 @@
  * model.
  */
 angular.module('todomvc')
-	.factory('todoStorage', function ($http, $injector) {
+	.factory('todoStorage', ['$http', '$injector', function($http, $injector) {
 		'use strict';
 
 		// Detect if an API backend is present. If so, return the API module, else
@@ -19,9 +19,9 @@ angular.module('todomvc')
 			}, function () {
 				return $injector.get('localStorage');
 			});
-	})
+	}])
 
-	.factory('api', function ($http) {
+	.factory('api', ['$http', function ($http) {
 		'use strict';
 
 		var store = {
@@ -100,9 +100,9 @@ angular.module('todomvc')
 		};
 
 		return store;
-	})
+	}])
 
-	.factory('localStorage', function ($q) {
+	.factory('localStorage', ['$q', function ($q) {
 		'use strict';
 
 		var STORAGE_ID = 'todos-angularjs';
@@ -182,4 +182,4 @@ angular.module('todomvc')
 		};
 
 		return store;
-	});
+	}]);

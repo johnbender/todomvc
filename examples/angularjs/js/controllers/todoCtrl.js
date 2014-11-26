@@ -6,7 +6,7 @@
  * - exposes the model to the template and provides event handlers
  */
 angular.module('todomvc')
-	.controller('TodoCtrl', function TodoCtrl($scope, $routeParams, $filter, store) {
+	.controller('TodoCtrl', ['$scope', '$routeParams', '$filter', 'store', function TodoCtrl($scope, $routeParams, $filter, store) {
 		'use strict';
 
 		var todos = $scope.todos = store.todos;
@@ -122,4 +122,4 @@ angular.module('todomvc')
 				}
 			});
 		};
-	});
+	}]);
