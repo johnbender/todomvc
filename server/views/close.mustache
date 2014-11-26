@@ -6,31 +6,16 @@
 
 
 
-		<script src="mustache/mustache.js"></script>
-		<script src="backbone/bower_components/todomvc-common/base.js"></script>
-		<script src="backbone/bower_components/jquery/jquery.js"></script>
-
-
 		<script>
-			jQuery(function(){
-				window.app = window.app || {}
+			window.app = window.app || {}
 
-				// TODO obviously this value needs to be escaped to avoid injection
-				window.app.data = {
-					todos: {{{ todosJSON }}}
-				}
-			});
+			// TODO obviously this value needs to be escaped to avoid injection
+			window.app.data = {
+			  todos: {{{ todosJSON }}}
+			}
 		</script>
 
-
-		<script src="backbone/bower_components/underscore/underscore.js"></script>
-		<script src="backbone/bower_components/backbone/backbone.js"></script>
-		<script src="backbone/bower_components/backbone.localStorage/backbone.localStorage.js"></script>
-		<script src="backbone/js/models/todo.js"></script>
-		<script src="backbone/js/collections/todos.js"></script>
-		<script src="backbone/js/views/todo-view.js"></script>
-		<script src="backbone/js/views/app-view.js"></script>
-		<script src="backbone/js/routers/router.js"></script>
-		<script src="backbone/js/app.js"></script>
+    <script src="backbone_server/all.min.js"></script>
+		<link rel="stylesheet" href="backbone_server/bower_components/todomvc-common/base.css">
 	</body>
 </html>
