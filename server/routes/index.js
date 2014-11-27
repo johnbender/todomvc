@@ -33,15 +33,15 @@ fs.readdirSync("views/client/").forEach(function( file ) {
   });
 });
 
-var inlinCSS = fs.readFileSync("public/backbone/bower_components/todomvc-common/base.css");
-
+// TODO currently unused for benchmarks
+var inlineCSS = fs.readFileSync("public/backbone/bower_components/todomvc-common/base.css");
 
 /* GET home page. */
 router.get('/', function(req, res) {
   var remaining;
 
   res.render('index', {
-    inlineCSS: inlinCSS,
+    inlineCSS: inlineCSS,
     templates: templates,
 
     todos: data.todos,
