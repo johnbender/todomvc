@@ -9,16 +9,16 @@
 		<input id="toggle-all" type="checkbox">
 		<label for="toggle-all">Mark all as complete</label>
 		<ul id="todo-list">
-      {{# todos }}
-      <li>
-        {{> client/item }}
-      </li>
-      {{/ todos }}
-    </ul>
+			{{# todos }}
+			<li>
+				{{> client/item }}
+			</li>
+			{{/ todos }}
+		</ul>
 	</section>
 	<footer id="footer">
-    {{> client/stats }}
-  </footer>
+		{{> client/stats }}
+	</footer>
 </section>
 <footer id="info">
 	<p>Double-click to edit a todo</p>
