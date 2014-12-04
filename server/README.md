@@ -6,15 +6,26 @@ Our goal with this small test and the resulting data set was to find a lower bou
 
 The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, minimal (minimized) assets, and minimal logic. Intuitively we've done our best to be generous in our measurements without exploring a different application entirely.
 
-We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (2x or higher results relative to the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network latency was acceptable.
+We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (2x or higher results relative to the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
 
 ### Results
 
-Of all the numbers collected, the **Render Start** was of primary interest based on our understanding of why the first load is important. This is the earliest point at which a user could conceivably report the application "ready to use".
+Of all the numbers collected, the **Render Start** was of primary interest based on our understanding of why the first load is important. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents our best approximation of "Time to Usable".
 
 Notable within the results are the following:
 
 * Both Ember and Angular hover around 4 seconds to **Render Start** on the shaped 3G connection.
+* Both Ember and Angular are well above the 4 second mark for a Nexus 5 on the shaped 3G connection.
+* Backbone does well, as both a client side only render and a server assist render (our alteration).
+
+### Possible Issues
+
+We did our best to think through possible issues with this testing approach including but not limited to the following questions:
+
+"TodoMVC is not built with load times in mind"
+
+"Poorly configured server"
+
 
 ### Possible Issues
 - "not built with speed in mind"
