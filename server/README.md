@@ -1,6 +1,6 @@
 ## TodoPerf
 
-Our goal with this small test and the resulting data set was to find a lower bound on "Time to Usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to keep the focus on the data for each application.
+Our goal with this small test and the resulting data set was to find a lower bound on "Time to Usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
 
 ### The Tests
 
