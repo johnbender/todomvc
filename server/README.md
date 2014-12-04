@@ -1,12 +1,12 @@
 ## TodoPerf
 
-Our goal with this small test and the resulting data set was to find a lower bound on "Time to Usable" for a few "popular" MV* frameworks[1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC.
+Our goal with this small test and the resulting data set was to find a lower bound on "Time to Usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to keep the focus on the data for each application.
 
 ### The Tests
 
 The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, minimal (minimized) assets, and minimal logic. Intuitively we've done our best to be generous in our measurements without exploring a different application entirely.
 
-We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (2x or higher results relative to the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
+We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (2x results *higher* the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
 
 ### Results
 
@@ -24,7 +24,7 @@ We did our best to think through possible issues with this testing approach incl
 
 "The sample set is small"
 
-We'd prefer to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. In general though, the results were consistent enough across runs performed outside those reported in the spreadsheet to give us confidence in them as a good first approximation of the lower bounds we were looking for.
+We'd definitely like to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. In general though, the results were consistent enough across runs performed outside those reported in the spreadsheet to give us confidence in them as a good first approximation of the lower bounds we were looking for.
 
 "TodoMVC is not built with load times in mind"
 
@@ -43,7 +43,7 @@ Ultimately, the time to first byte numbers included in the data suggests that th
 
 ### Notes
 
-1. Popularity here is defined as "Those frameworks we've heard the most noise about recently".
+1. Popularity here is defined as "Those frameworks we've heard the most noise about recently". If you want to add one, feel free to run the tests for your preferred framework/library.
 2. Link to information on why first load matters
 3. Link to bulk testing spreadsheet
 4. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L50
