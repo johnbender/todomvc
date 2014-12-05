@@ -12,11 +12,11 @@ We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We 
 
 Of all the numbers collected, we were most interested in **Render Start**. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents a generous approximation of "time to usable".
 
-Notable within the results are the following:
+Notable within the **Render Start** results are the following:
 
-* Both Ember and Angular hover around 4 seconds to **Render Start** on the shaped 3G connection.
+* Both Ember and Angular hover around 4 seconds on the shaped 3G connection.
 * Both Ember and Angular are well above the 4 second mark for a Nexus 5 on the shaped 3G connection.
-* Backbone does well, as both a client side only render and a server assist render (our alteration).
+* Backbone does fairly well, as both a client side only render and a server assist render (our alteration).
 
 ### Possible Issues
 
