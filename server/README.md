@@ -4,7 +4,7 @@ Our goal with this small test and the resulting data set was to find a lower bou
 
 ### The Tests
 
-The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, minimal (and minimized) assets, and minimal logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
+The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, small (minimized) assets, and little logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
 
 We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (results 2x *higher* than the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
 
