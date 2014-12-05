@@ -4,7 +4,7 @@ Our goal with this small test and the resulting data set was to find a lower bou
 
 ### The Tests
 
-The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, minimal (minimized) assets, and minimal logic. Intuitively we've done our best to be generous in our measurements without exploring a different application entirely.
+The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, minimal (and minimized) assets, and minimal logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
 
 We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We did five runs of each and discarded extreme outliers (results 2x *higher* than the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
 
@@ -28,7 +28,7 @@ We'd definitely like to have outside confirmation of our data and this is why th
 
 "TodoMVC is not built with load times in mind"
 
-It is definitely the case that the TodoMVC examples were constructed as an educational resource and not optimized for render times. Our understanding is that the logic required for the Todo application is small enough to make the gains possible through optimization here very small.
+It is definitely the case that the TodoMVC examples were constructed as an educational resource and not optimized for render times. Our understanding is that the logic required for the Todo application is small enough that the gains possible through optimization here are very small.
 
 "Poorly configured server"
 
@@ -39,7 +39,7 @@ Our configuration involves the following optimizations to each of the test pages
 3. Moving the blocking CSS to the bottom of the `body` [4]. Note, this means that **Render Start** will often include un-styled markup as a further concession.
 4. Serving assets with compression [5].
 
-Ultimately, the time to first byte numbers included in the data suggests that the server performed well enough to be representative of normal network and server conditions.
+Ultimately, the time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions.
 
 ### Notes
 
