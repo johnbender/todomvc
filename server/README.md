@@ -1,6 +1,6 @@
 ## TodoPerf
 
-Our goal with this small test and the resulting data set was to find a lower bound on "Time to Usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
+Our goal with this small test and the resulting data set was to find a lower bound on "time to usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
 
 ### The Tests
 
@@ -10,7 +10,7 @@ We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We 
 
 ### Results
 
-Of all the numbers collected, the **Render Start** was of primary interest based on our understanding of why the first load is important. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents a generous approximation of "Time to Usable".
+Of all the numbers collected, we were most interested in **Render Start**. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents a generous approximation of "time to usable".
 
 Notable within the results are the following:
 
