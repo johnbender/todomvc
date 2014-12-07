@@ -1,12 +1,12 @@
 ## TodoPerf
 
-Our goal with this small test and the resulting data set was to find a lower bound on "time to usable" for a few "popular" MV* frameworks/libraries [1]. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
+Our goal with this small test and the resulting data set was to find a lower bound on "time to usable" for a few popular MV* frameworks/libraries. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
 
 ### The Tests
 
-The test itself rests on a few assumptions, primarily that the first page load matters for web applications [2]. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, small (minimized) assets, and little logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
+The test itself rests on a few assumptions, primarily that the first page load matters for web applications. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, small (minimized) assets, and little logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
 
-We ran our tests using WebPageTest.org and the bulk testing spreadsheet [3]. We kept twenty runs of each and discarded extreme outliers (results 2x *higher* than the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
+We ran our tests using WebPageTest.org and the bulk testing spreadsheet [1]. We kept twenty runs of each and discarded extreme outliers (results 2x *higher* than the mean). We tested a desktop and a mobile browser both at 3G, and the desktop again at Cable speeds all from the Dulles, VA data center. The time to first byte for each test suggests that the network overhead was acceptable.
 
 ### Results
 
@@ -24,27 +24,25 @@ We did our best to think through possible issues with this testing approach incl
 
 "The sample set is small"
 
-We'd definitely like to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. In general though, the results were consistent enough across runs performed outside those reported in the spreadsheet to give us confidence in them as a good first approximation of the lower bounds we were looking for.
+We'd definitely like to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. Otherwise the calculated confidence intervals suggest that the sample mean is a good indicator of how these pages would consistently perform under the network conditions found in the Dulles, VA data center.
 
 "TodoMVC is not built with load times in mind"
 
-It is definitely the case that the TodoMVC examples were constructed as an educational resource and not optimized for render times. Our understanding is that the logic required for the Todo application is small enough that the gains possible through optimization here are very small.
+The TodoMVC examples were constructed as an educational resource and not optimized for render times. Our understanding is that the logic required for the Todo application is small enough that the gains possible through optimization here are very small.
 
 "Poorly configured server"
 
 Our configuration involves the following optimizations to each of the test pages:
 
 1. Removing the common TodoMVC "Learn" section from the JavaScript.
-2. Concatenating and minifying all other JavaScript [4].
-3. Moving the blocking CSS to the bottom of the `body` [4]. Note, this means that **Render Start** will often include un-styled markup as a further concession.
-4. Serving assets with compression [5].
+2. Concatenating and minifying all other JavaScript [2].
+3. Moving the blocking CSS to the bottom of the `body` [2]. Note, this means that **Render Start** will often include un-styled markup as a further concession.
+4. Serving assets with compression [3].
 
 Ultimately, the time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions.
 
 ### Notes
 
-1. Popularity here is defined as "Those frameworks we've heard the most noise about recently". If you want to add one, feel free to run the tests for your preferred framework/library.
-2. Link to information on why first load matters
-3. Link to bulk testing spreadsheet
-4. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L50
-5. https://github.com/johnbender/todomvc/blob/device-timing/server/app.js#L29
+1. https://github.com/andydavies/WPT-Bulk-Tester%29
+2. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L50
+3. https://github.com/johnbender/todomvc/blob/device-timing/server/app.js#L29
