@@ -39,7 +39,7 @@ Our configuration involves the following optimizations to each of the test pages
 3. Moving the blocking CSS to the bottom of the `body` [2]. Note, this means that **Render Start** will often include un-styled markup as a further concession.
 4. Serving assets with compression [3].
 
-Ultimately, the time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions.
+In addition we set up our test server in Digital Ocean's New York data center and ran the tests using the Dulles, VA WebPageTest servers. The time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions where assets would be served by a CDN.
 
 ### Notes
 
