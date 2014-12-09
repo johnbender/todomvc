@@ -36,13 +36,14 @@ Our configuration involves the following optimizations to each of the test pages
 
 1. Removing the common TodoMVC "Learn" section from the JavaScript.
 2. Concatenating and minifying all other JavaScript [2].
-3. Moving the blocking CSS to the bottom of the `body` [2]. Note, this means that **Render Start** will often include un-styled markup as a further concession.
-4. Serving assets with compression [3].
+3. Inlining the CSS into the `head` of the document [3].
+4. Serving assets with compression [4].
 
 In addition we set up our test server in Digital Ocean's New York data center and ran the tests using the Dulles, VA WebPageTest servers. The time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions where assets would be served by a CDN.
 
 ### Notes
 
-1. https://github.com/andydavies/WPT-Bulk-Tester%29
-2. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L50
-3. https://github.com/johnbender/todomvc/blob/device-timing/server/app.js#L29
+1. https://github.com/andydavies/WPT-Bulk-Tester
+2. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L53
+3. e.g. https://github.com/johnbender/todomvc/blob/device-timing/examples/backbone/index.html#L7
+4. https://github.com/johnbender/todomvc/blob/device-timing/server/app.js#L29
