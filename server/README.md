@@ -24,7 +24,7 @@ We did our best to think through possible issues with this testing approach incl
 
 "The sample set is small"
 
-We'd definitely like to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. Otherwise the calculated confidence intervals suggest that the sample mean is a good indicator of how these pages would consistently perform under the network conditions found in the Dulles, VA data center.
+We'd definitely like to have outside confirmation of our data and this is why the test, the method, the code, and the spreadsheet are being made available along with our reasoning. Otherwise the calculated confidence intervals suggest that it's unlikely the population mean falls outside our sample mean.
 
 "TodoMVC is not built with load times in mind"
 
