@@ -2,7 +2,7 @@
 if [ -z "$1" ]; then
   echo "Usage concat-min.sh <public folder>"
   echo "e.g."
-  echo "bash bin/concat-min.sh /public"
+  echo "bash bin/concat-min.sh public/"
   exit 1
 fi
 
