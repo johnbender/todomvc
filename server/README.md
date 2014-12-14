@@ -1,8 +1,8 @@
-## TodoPerf
+# TodoPerf
 
 Our goal with this small test and the resulting data set was to find a lower bound on "time to usable" for a few popular MV* frameworks/libraries. To that end we leveraged the most ubiquitous common application for which every framework seems to have an implementation, TodoMVC, if only to minimize the number of variables under consideration.
 
-### The Tests
+## The Tests
 
 The test itself rests on a few assumptions, primarily that the first page load matters for web applications. Further we assume that the optimized version of TodoMVC is simple enough that it represents a minimal application for these frameworks: no second loads, small (minimized) assets, and little logic. Intuitively, we've done our best to be generous with the test construction short of exploring a different application entirely.
 
@@ -10,7 +10,7 @@ We ran our tests using WebPageTest.org and the bulk testing spreadsheet [1]. We 
 
 ### Results
 
-Of all the numbers collected, we were most interested in **Render Start**. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents a generous approximation of "time to usable".
+Of all the [data collected](https://docs.google.com/spreadsheets/d/136H3Aof5dDc8pSsGQ1VcCbPnwp_HldEcvnxU-ARd89M/edit#gid=0), we were most interested in **Render Start**. This is the earliest point at which a user could conceivably report the application "ready to use" and so it represents a generous approximation of "time to usable".
 
 Notable within the **Render Start** results are the following:
 
@@ -40,6 +40,30 @@ Our configuration involves the following optimizations to each of the test pages
 4. Serving assets with compression [4].
 
 In addition we set up our test server in Digital Ocean's New York data center and ran the tests using the Dulles, VA WebPageTest servers. The time to first byte numbers included in the data suggests that the server performed well enough to represent normal network and server conditions where assets would be served by a CDN.
+
+## Setup
+
+If you want to work locally on the test setup, we've included a `Vagrantfile` and a small provisioning script `bin/setup.sh`. To create the VM, simply `vagrant up` and wait for a few minutes while things are set up for you.
+
+If you want to deploy elsewhere, the same setup script should work for Ubuntu 14.04 wherever it happens to be installed
+
+Once you have the server environment set up the assets for each example have to be concatenated and minified. To produce the minified version of the assets required by the altered index files run:
+
+```
+bash bin/concat-min.sh /public
+```
+
+Then run the sever execute the script created by express:
+
+```
+./bin/www
+```
+
+If you're working with Vagrant the examples should be available at `33.33.33.10:3000/<example-path>/` where `<example-path>` can take the values `backbone`, `emberjs`, `angularjs`. Otherwise simply replace the IP with your host address.
+
+### Our Server
+
+As explained elsewhere we chose to host the application on a Digital Ocean droplet with 1gb of memory in the third NYC data center. You may be interested in comparing results from data centers further away from the request (our tests were run from Dulles, VA) but they won't be comparable with our results.
 
 ### Notes
 

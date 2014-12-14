@@ -7,8 +7,6 @@ fi
 
 index_files=$( find -L $1  -maxdepth 2 -name "index.html" )
 
-
-
 echo "Project index files to get js from: "
 echo $index_files
 echo
