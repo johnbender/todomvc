@@ -58,7 +58,7 @@ sudo bash bin/setup.sh $PROJECT_DIR/server
 Once you have the server environment set up the assets for each example have to be concatenated and minified. To produce the minified version of the assets required by the altered index files run:
 
 ```
-./bin/concat-min.sh /public
+./bin/concat-min.sh public
 ```
 
 To start the server:
