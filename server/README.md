@@ -45,15 +45,23 @@ In addition we set up our test server in Digital Ocean's New York data center an
 
 If you want to work locally on the test setup, we've included a `Vagrantfile` and a small provisioning script `bin/setup.sh`. To create the VM, simply `vagrant up` and wait for a few minutes while things are set up for you.
 
-If you want to deploy elsewhere, the same setup script should work for Ubuntu 14.04 wherever it happens to be installed
+**NOTE** the `Vagrantfile` resides in the `server` subdirectory which is where all the following commands should be run from in the VM, but the shared folder is the parent project directory due to the symlinks from `server/public` to the example directories.
+
+If you want to deploy elsewhere, the same setup script should work for Ubuntu 14.04 wherever it happens to be installed. Simply provide it with the project directory when you run it:
+
+```
+sudo bash bin/setup.sh $PROJECT_DIR/server
+
+# `sudo ./bin/setup.sh .` if you're running this from the `server` subdir
+```
 
 Once you have the server environment set up the assets for each example have to be concatenated and minified. To produce the minified version of the assets required by the altered index files run:
 
 ```
-bash bin/concat-min.sh /public
+./bin/concat-min.sh /public
 ```
 
-Then run the sever execute the script created by express:
+To start the server:
 
 ```
 ./bin/www

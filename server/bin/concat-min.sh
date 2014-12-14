@@ -1,4 +1,5 @@
-if [ -z "$2" ]; then
+#! /bin/bash
+if [ -z "$1" ]; then
   echo "Usage concat-min.sh <public folder>"
   echo "e.g."
   echo "bash bin/concat-min.sh /public"
