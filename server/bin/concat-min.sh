@@ -1,4 +1,12 @@
+if [ -z "$2" ]; then
+  echo "Usage concat-min.sh <public folder>"
+  echo "e.g."
+  echo "bash bin/concat-min.sh /public"
+  exit 1
+fi
+
 index_files=$( find -L $1  -maxdepth 2 -name "index.html" )
+
 
 
 echo "Project index files to get js from: "
