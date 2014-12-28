@@ -3,4 +3,5 @@ node_modules
 /dist
 *all.*js
 .tmp
+examples/react/js/.module-cache
 

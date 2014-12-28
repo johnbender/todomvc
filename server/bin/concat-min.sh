@@ -24,11 +24,13 @@ for file in $index_files; do
 
   echo "" > "$sub_dir/$project.all.js"
 
-  for js in $( cat $file | grep "script src" | sed 's/.*src="\(.*\)".*/\1/' ); do
+  for js in $( cat $file | grep "script" | grep "src" | sed 's/.*src="\(.*\)".*/\1/' ); do
     if echo "$js" | grep "all\." > /dev/null; then
-      echo "Skipping:    *.all.js"
+      echo "Skipping:    *.all.*"
       continue;
     fi
+
+    echo "$js"
 
     cat "$sub_dir/$js" >> "$all_file"
   done
