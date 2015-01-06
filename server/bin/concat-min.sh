@@ -24,6 +24,7 @@ for file in $index_files; do
 
   echo "" > "$sub_dir/$project.all.js"
 
+  echo "Including: "
   for js in $( cat $file | grep "script" | grep "src" | sed 's/.*src="\(.*\)".*/\1/' ); do
     if echo "$js" | grep "all\." > /dev/null; then
       echo "Skipping:    *.all.*"
