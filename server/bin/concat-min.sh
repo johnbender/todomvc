@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-index_files=$( find -L $1  -maxdepth 2 -name "index.html" )
+index_files=$( find -L $1  -maxdepth 2 -name "index.html" | sort )
 
 echo "Project index files to get js from: "
 echo $index_files
